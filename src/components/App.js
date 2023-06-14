@@ -40,67 +40,65 @@ function App() {
   }
 
   return (
-      <body className="body">
-        <div className="page">
-          <Header />
-          <Main onEditAvatar={handleEditAvatarClick}
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onCardClick={handleCardClick}
-          />
-          <PopupWithForm title={'Редактировать профиль'}
-                         name={'editProfile'}
-                         isOpen={isEditProfilePopupOpen}
-                         onClose={closeAllPopups}
-          >
-            <div className="edit-form__field">
-              <input name="name" className="edit-form__input" type="text" placeholder="Имя" required minlength="2" maxlength="40"/>
-              <span id="name__error" className="edit-form__input-error"></span>
-            </div>
-            <div className="edit-form__field">
-              <input name="job" className="edit-form__input" type="text" placeholder="Деятельность" required minlength="2" maxlength="200"/>
-              <span id="job__error" className="edit-form__input-error"></span>
-            </div>
-            <button type="submit" className="edit-form__submit-button edit-form__submit-button_disabled" disabled="disabled">Сохранить</button>
-          </PopupWithForm>
-          <PopupWithForm title={'Новое место'}
-                         name={'newPlace'}
-                         isOpen={isAddPlacePopupOpen}
-                         onClose={closeAllPopups}
-          >
-            <div className="edit-form__field">
-              <input name="place_name" className="edit-form__input" type="text" placeholder="Название" required minlength="2" maxlength="30"/>
-              <span id="place_name__error" className="edit-form__input-error"></span>
-            </div>
-            <div className="edit-form__field">
-              <input name="place_link" className="edit-form__input" type="url" placeholder="Ссылка на картинку" required/>
-              <span id="place_link__error" className="edit-form__input-error"></span>
-            </div>
-            <button type="submit" className="edit-form__submit-button edit-form__submit-button_disabled" disabled="disabled">Создать</button>
-          </PopupWithForm>
-          <PopupWithForm title={'Вы уверены?'}
-                         name={'areYouSure'}
-                        //  isOpen={isAddPlacePopupOpen}
-                         onClose={closeAllPopups}
-          >
-            <button type="submit" className="edit-form__submit-button edit-form__submit-button_disabled" disabled="disabled">Да</button>
-          </PopupWithForm>
-          <PopupWithForm title={'Обновить аватар'}
-                         name={'editAvatar'}
-                         isOpen={isEditAvatarPopupOpen}
-                         onClose={closeAllPopups}
-          >
-            <div className="edit-form__field">
-              <input name="avatar" className="edit-form__input" type="url" placeholder="Ссылка на новую аватарку" required/>
-              <span id="avatar__error" className="edit-form__input-error"></span>
-            </div>
-            <button type="submit" className="edit-form__submit-button edit-form__submit-button_disabled" disabled="disabled">Сохранить</button>
-          </PopupWithForm>
-          <ImagePopup card={selectedCard}
-                      onClose={closeAllPopups}/>
-          <Footer />
-        </div>
-      </body>
+      <div className="page">
+        <Header />
+        <Main onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+        />
+        <PopupWithForm title={'Редактировать профиль'}
+                        name={'editProfile'}
+                        isOpen={isEditProfilePopupOpen}
+                        onClose={closeAllPopups}
+                        buttonText={'Сохранить'}
+        >
+          <div className="edit-form__field">
+            <input name="name" className="edit-form__input" type="text" placeholder="Имя" required minLength="2" maxLength="40"/>
+            <span id="name__error" className="edit-form__input-error"></span>
+          </div>
+          <div className="edit-form__field">
+            <input name="job" className="edit-form__input" type="text" placeholder="Деятельность" required minLength="2" maxLength="200"/>
+            <span id="job__error" className="edit-form__input-error"></span>
+          </div>
+        </PopupWithForm>
+        <PopupWithForm title={'Новое место'}
+                        name={'newPlace'}
+                        isOpen={isAddPlacePopupOpen}
+                        onClose={closeAllPopups}
+                        buttonText={'Создать'}
+        >
+          <div className="edit-form__field">
+            <input name="place_name" className="edit-form__input" type="text" placeholder="Название" required minLength="2" maxLength="30"/>
+            <span id="place_name__error" className="edit-form__input-error"></span>
+          </div>
+          <div className="edit-form__field">
+            <input name="place_link" className="edit-form__input" type="url" placeholder="Ссылка на картинку" required/>
+            <span id="place_link__error" className="edit-form__input-error"></span>
+          </div>
+        </PopupWithForm>
+        <PopupWithForm title={'Вы уверены?'}
+                        name={'areYouSure'}
+                      //  isOpen={isAddPlacePopupOpen}
+                        onClose={closeAllPopups}
+                        buttonText={'Да'}
+        >
+        </PopupWithForm>
+        <PopupWithForm title={'Обновить аватар'}
+                        name={'editAvatar'}
+                        isOpen={isEditAvatarPopupOpen}
+                        onClose={closeAllPopups}
+                        buttonText={'Сохранить'}
+        >
+          <div className="edit-form__field">
+            <input name="avatar" className="edit-form__input" type="url" placeholder="Ссылка на новую аватарку" required/>
+            <span id="avatar__error" className="edit-form__input-error"></span>
+          </div>
+        </PopupWithForm>
+        <ImagePopup card={selectedCard}
+                    onClose={closeAllPopups}/>
+        <Footer />
+      </div>
   );
 }
 

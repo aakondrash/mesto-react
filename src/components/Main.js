@@ -28,7 +28,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
             );
         })
         .catch((err) => console.log(err));
-    });
+    }, []);
 
     return (
         <main className="content">
@@ -48,7 +48,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
                 <ul className="elements__list">
                     {
                         cards.map((card) =>
-                            <Card card={card} onCardClick={onCardClick}/>
+                            <Card key={card._id} card={card} onCardClick={onCardClick}/>
                         )
                     }
                 </ul>
