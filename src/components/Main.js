@@ -19,13 +19,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
         })
         .catch((err) => console.log(err));
         api.getInitialCards().then((cardsData) => {
-            setCards(
-                cardsData.map((card) => ({
-                    name: card.name,
-                    link: card.link,
-                    cardId: card._id
-                }))
-            );
+            setCards(cardsData);
         })
         .catch((err) => console.log(err));
     }, []);
