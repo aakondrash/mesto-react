@@ -13,8 +13,10 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
     }
 
     useEffect(() => {
-        avatarLink.current.value = '';
-    }, []); 
+        if (isOpen) {
+            avatarLink.current.value = '';
+        }
+    }, [isOpen]); 
 
     return (
         <PopupWithForm title={'Обновить аватар'}

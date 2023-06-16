@@ -28,9 +28,11 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     } 
 
     useEffect(() => {
-        setName(currentUser.name);
-        setDescription(currentUser.about);
-    }, [currentUser]); 
+        if (isOpen) {
+            setName(currentUser.name);
+            setDescription(currentUser.about);
+        }
+    }, [isOpen, currentUser]); 
 
     return (
         <PopupWithForm  title={'Редактировать профиль'}

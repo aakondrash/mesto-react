@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup({isOpen, onClose, onAddPlace}) {
@@ -19,6 +19,13 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         onAddPlace({ name, link });
     }
 
+    useEffect(() => {
+        if (!isOpen) {
+          setName('');
+          setLink('');
+        }
+      }, [isOpen]);
+
     return (
         <PopupWithForm title={'Новое место'}
                         name={'newPlace'}
@@ -28,11 +35,11 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
                         buttonText={'Создать'}
         >
           <div className="edit-form__field">
-            <input name="place_name" className="edit-form__input" type="text" placeholder="Название" minLength="2" maxLength="30" onInput={handleAddName} required />
+            <input name="place_name" className="edit-form__input" type="text" placeholder="Название" minLength="2" maxLength="30" onInput={handleAddName} value={name} required />
             <span id="place_name__error" className="edit-form__input-error"></span>
           </div>
           <div className="edit-form__field">
-            <input name="place_link" className="edit-form__input" type="url" placeholder="Ссылка на картинку" onInput={handleAddLink} required />
+            <input name="place_link" className="edit-form__input" type="url" placeholder="Ссылка на картинку" onInput={handleAddLink} value={link} required />
             <span id="place_link__error" className="edit-form__input-error"></span>
           </div>
         </PopupWithForm>

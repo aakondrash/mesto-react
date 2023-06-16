@@ -56,7 +56,7 @@ function App() {
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
+    }).catch((err) => console.log(err));
   }
 
   const handleCardDelete = (card) => {
@@ -64,7 +64,7 @@ function App() {
     .then(res => {
       setCards((state) => state.filter((c) => c._id !== card._id));
       closeAllPopups();
-    });
+    }).catch((err) => console.log(err));
   }
 
   const closeAllPopups = () => {
