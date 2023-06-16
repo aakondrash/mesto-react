@@ -39,7 +39,7 @@ class Api {
       },
       body: JSON.stringify({
         name: data.name,
-        about: data.job,
+        about: data.about,
       }),
     }).then((res) => this._checkRequestStatus(res));
   }
@@ -97,6 +97,15 @@ class Api {
       },
     }).then((res) => this._checkRequestStatus(res));
   }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.handleCardLike(cardId);
+    } else {
+      return this.removeCardLike(cardId);
+    }
+  }
+
 
 }
 
